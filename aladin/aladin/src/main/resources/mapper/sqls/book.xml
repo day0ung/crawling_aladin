@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cra.aladin.dao.BookDao">
+	<insert id="insertBookData" parameterType="book">
+	<![CDATA[
+		INSERT INTO BOOK_ALADIN(
+			ITEM_ID, 
+			GUBUN, 
+			TITLE, 
+			INFO, 
+			WRITER, 
+			PUBLISHER, 
+			IMAGE, 
+			IMAGE_SRC, 
+			GIHO, 
+			PUB_YEAR, 
+			PAGE_CNT,
+			REG_DT
+		) VALUES (
+			#{itemId},
+			#{gubun},
+			#{title},
+			#{info},
+			#{writer},
+			#{publisher},
+			#{image},
+			#{image_src},
+			#{giho},
+			#{pubYear},
+			#{pageCnt},
+			NOW()
+		)
+		ON DUPLICATE KEY UPDATE
+		ITEM_ID = #{itemId},
+		GUBUN = #{gubun},
+		TITLE = #{title},
+		INFO = #{info},
+		WRITER = #{writer},
+		PUBLISHER = #{publisher},
+		IMAGE = #{image},
+		IMAGE_SRC = #{image_src},
+		GIHO = #{giho},
+		PUB_YEAR = #{pubYear},
+		PAGE_CNT = #{pageCnt},
+		REG_DT = NOW()
+	]]>
+	</insert>
+</mapper>
